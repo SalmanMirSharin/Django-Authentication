@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <form method="post" style="width:50%; margin:auto;" novalidate>
+        <h3>Password Change</h3>
+
+        {% csrf_token %}
+
+         {% if form.non_field_errors %} 
+            {% for er in form.non_field_errors %}
+                <p class='bg-danger text-white p-3'>{{er}}</p>
+            {% endfor %}
+        {% endif %} 
+
+        {% for field in form %}
+            {{field.label_tag}}
+            {{field}}
+            {{field|striptags}}
+        {% endfor %}
+
+        <button class="btn btn-primary mt-3" type="submit">Change password</button>
+
+    </form>
+
+
+
+{% endblock content %}
